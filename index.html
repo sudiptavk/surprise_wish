@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Wish</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #fef3f3;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    /* Heart animation */
+    .heart {
+      position: absolute;
+      animation: fly 5s infinite ease-in-out;
+      color: red;
+      font-size: 30px;
+    }
+
+    @keyframes fly {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Birthday Card */
+    .card {
+      width: 300px;
+      height: 400px;
+      background-image: url("IMG_8849 2.jpg");
+      background-size: cover;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.5s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .message {
+      font-size: 10px;
+      font-style: italic;
+      font-family: 'Times New Roman', serif;
+      display: none;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    #second-page {
+      display: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" onclick="openCard()">
+    <!-- Card Cover Image -->
+  </div>
+
+  <!-- Hidden Birthday Message -->
+  <div class="message" id="message">
+    Happiest birthday to my favorite person! You deserve all the happiness in the world.
+    I’m sorry I’m not around to make your day special but I hope this virtual card gave you
+    some happiness. Here’s to celebrating many more birthdays with you (hopefully in person).
+  </div>
+
+  <!-- Cake Page -->
+  <div id="second-page">
+    <h1>🎂 Here's Your Birthday Cake 🎂</h1>
+    <img src="IMG_8855.jpg" alt="Cake Image" width="200px">
+  </div>
+
+  <!-- Heart Animation -->
+  <script>
+    for (let i = 0; i < 50; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDelay = Math.random() * 5 + "s";
+      document.body.appendChild(heart);
+    }
+
+    function openCard() {
+      document.querySelector(".card").style.display = "none";
+      document.getElementById("message").style.display = "block";
+
+      setTimeout(() => {
+        document.getElementById("message").style.display = "none";
+        document.getElementById("second-page").style.display = "block";
+      }, 5000); // Display second page after 5 seconds
+    }
+  </script>
+</body>
+</html>
